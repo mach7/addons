@@ -11,7 +11,7 @@ on:
 
 jobs:
   init:
-    if: github.actor == 'mach7'
+    if: github.actor == 'mach7' && github.triggering_actor == 'mach7'
     runs-on: ubuntu-latest
     name: Initialize builds
     outputs:
@@ -63,7 +63,7 @@ jobs:
   build:
     needs: init
     runs-on: ubuntu-latest
-    if: (needs.init.outputs.changed == 'true') && github.actor == 'mach7'
+    if: (needs.init.outputs.changed == 'true') && github.actor == 'mach7' && github.triggering_actor == 'mach7'
     name: Build ${{ matrix.arch }} ${{ matrix.addon }} add-on
     strategy:
       matrix:

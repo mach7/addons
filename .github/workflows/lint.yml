@@ -11,7 +11,7 @@ on:
 
 jobs:
   hadolint:
-    if: github.actor == 'mach7'
+    if: github.actor == 'mach7' && github.triggering_actor == 'mach7'
     runs-on: ubuntu-latest
     name: hadolint
     steps:
@@ -30,7 +30,7 @@ jobs:
           done
 
   yamllint:
-    if: github.actor == 'mach7'
+    if: github.actor == 'mach7' && github.triggering_actor == 'mach7'
     runs-on: ubuntu-latest
     name: YAMLLint
     steps:
@@ -41,7 +41,7 @@ jobs:
         uses: frenck/action-yamllint@v1.4
 
   shellcheck:
-    if: github.actor == 'mach7'
+    if: github.actor == 'mach7' && github.triggering_actor == 'mach7'
     runs-on: ubuntu-latest
     name: ShellCheck
     steps:
